@@ -1,5 +1,5 @@
 import {createContext} from 'react';
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import Todo from "../components/Types/Todo";
 interface contextType {
@@ -13,8 +13,9 @@ export const myContext = createContext<contextType>({
     removeTodo : () => {},
 });
 const ContextProvider:React.FC<{children : React.ReactNode}> = (props) => {
-    // const initialTodos:Todo[] = JSON.parse(localStorage.getItem('todos'));
-    const [todos , setTodos] = useState<Todo[]>([]);
+  const storedTodos = localStorage.getItem('todos'); 
+    const initialTodos:Todo[] = storedTodos ? JSON.parse(storedTodos)  : [];
+    const [todos , setTodos] = useState<Todo[]>(initialTodos);
     function addTodoHandler (text : string) {
       const newTodo = new Todo(text);
       setTodos((prevTodos) => {
@@ -26,10 +27,10 @@ const ContextProvider:React.FC<{children : React.ReactNode}> = (props) => {
         return prevTodos.filter((todo) => todo.id !==todoId);
       })
     }
-    // useEffect(() => {
-    //   // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    //   localStorage.setItem('todos',JSON.stringify(todos));
-    // } , [todos]);
+    useEffect(() => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      localStorage.setItem('todos',JSON.stringify(todos));
+    } , [todos]);
 
     const contextValues : contextType = {
         items : todos,
