@@ -9,10 +9,10 @@ interface contextType {
 }
 export const myContext = createContext<contextType>({
     items : [],
-    addTodo : (text : string) => {},
-    removeTodo : (id : string) => {},
+    addTodo : () => {},
+    removeTodo : () => {},
 });
-const ContextProvider = (props) => {
+const ContextProvider:React.FC = (props) => {
     
     // const initialTodos:Todo[] = JSON.parse(localStorage.getItem('todos'));
     const [todos , setTodos] = useState<Todo[]>([]);
