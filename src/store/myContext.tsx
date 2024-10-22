@@ -12,8 +12,7 @@ export const myContext = createContext<contextType>({
     addTodo : () => {},
     removeTodo : () => {},
 });
-const ContextProvider:React.FC = (props) => {
-    
+const ContextProvider:React.FC<{children : React.ReactNode}> = (props) => {
     // const initialTodos:Todo[] = JSON.parse(localStorage.getItem('todos'));
     const [todos , setTodos] = useState<Todo[]>([]);
     function addTodoHandler (text : string) {
