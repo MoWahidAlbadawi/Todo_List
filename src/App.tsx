@@ -8,8 +8,7 @@ function App() {
 
   return (
     <div className="container">
-      <NewTodo onAddTodo = {ctx.addTodo}/>
-        <Todos items={ctx.items} onRemoveTodo={ctx.removeTodo}/>
+    <p>Hello</p>
     </div>
   )
 }
