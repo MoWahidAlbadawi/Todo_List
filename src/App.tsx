@@ -1,10 +1,5 @@
-import { useContext } from "react";
-import NewTodo from "./components/NewTodo";
-import Todos from "./components/Todos";
-import { myContext } from "./store/myContext";
-function App() {
 
-  const ctx = useContext(myContext);
+function App() {
 
   return (
     <div className="container">
